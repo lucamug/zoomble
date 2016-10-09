@@ -1,0 +1,185 @@
+html {
+  font-size: 0.9375em;
+}
+@media (min-width: 20em) {
+  html {
+    font-size: 0.9375em;
+  }
+}
+@media (min-width: 34em) {
+  html {
+    font-size: 0.96875em;
+  }
+}
+@media (min-width: 48em) {
+  html {
+    font-size: 1em;
+  }
+}
+@media (min-width: 62em) {
+  html {
+    font-size: 1.03125em;
+  }
+}
+@media (min-width: 76em) {
+  html {
+    font-size: 1.0625em;
+  }
+}
+
+.minimum12px {
+  font-size: 0.8em;
+}
+
+.minimum14px {
+  font-size: 0.93333em;
+}
+
+.minimum24px {
+  font-size: 1.6em;
+}
+
+.AAAAAAA {
+  font-size: 4.6875vw;
+}
+
+@media (min-width: 20em) {
+  .nAAAAAn {
+    font-size: 4.6875vw;
+  }
+}
+@media (min-width: 90em) {
+  .nAAAAAn {
+    font-size: 3.97059rem;
+  }
+}
+
+@media (min-width: 20em) {
+  .nBnnnnn {
+    font-size: 2.84926vw;
+  }
+}
+@media (min-width: 34em) {
+  .nBnnnnn {
+    font-size: 1.03333rem;
+  }
+}
+
+@media (min-width: 34em) {
+  .nnBnnnn {
+    font-size: 2.84926vw;
+  }
+}
+@media (min-width: 48em) {
+  .nnBnnnn {
+    font-size: 1.41176rem;
+  }
+}
+
+@media (min-width: 34em) {
+  .nnBBBn {
+    font-size: 2.84926vw;
+  }
+}
+@media (min-width: 76em) {
+  .nnBBBn {
+    font-size: 2.09982rem;
+  }
+}
+
+@media (min-width: 20em) {
+  .nABCDEn {
+    font-size: 4.6875vw;
+  }
+}
+@media (min-width: 34em) {
+  .nABCDEn {
+    font-size: 2.84926vw;
+  }
+}
+@media (min-width: 48em) {
+  .nABCDEn {
+    font-size: 2.08333vw;
+  }
+}
+@media (min-width: 62em) {
+  .nABCDEn {
+    font-size: 1.66331vw;
+  }
+}
+@media (min-width: 76em) {
+  .nABCDEn {
+    font-size: 1.39803vw;
+  }
+}
+@media (min-width: 90em) {
+  .nABCDEn {
+    font-size: 1.18421rem;
+  }
+}
+
+.nABCDEn-float:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.nABCDEn-float > div {
+  border: 1px solid #999;
+  float: left;
+  padding: 0.5em;
+  width: 100%;
+}
+@media (min-width: 34em) {
+  .nABCDEn-float > div {
+    width: 50%;
+  }
+}
+@media (min-width: 48em) {
+  .nABCDEn-float > div {
+    width: 33.33333%;
+  }
+}
+@media (min-width: 76em) {
+  .nABCDEn-float > div {
+    width: 25%;
+  }
+}
+@media (min-width: 90em) {
+  .nABCDEn-float > div {
+    width: 20%;
+  }
+}
+
+body {
+  margin: 1em;
+  background: #ddd;
+  font-family: sans-serif;
+  color: #444;
+}
+body > div {
+  margin-bottom: 16px;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+.minimum12px {
+  color: Chocolate;
+}
+
+.minimum14px {
+  color: CornflowerBlue;
+}
+
+.minimumDefault {
+  color: DarkOliveGreen;
+}
+
+.minimum24px {
+  color: GoldenRod;
+}

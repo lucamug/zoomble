@@ -1,0 +1,143 @@
+// Zoomble 凸 by lucamug //
+// http://coding-and-design.blogspot.de/2016/10/css-responsive-mini-framework-with.html
+// http://codepen.io/lucamug/pen/ORQKdx
+$browser-context-px:        16.0px //  1em
+$breakpoints-start-px:     320.0px // 20em
+$breakopints-increment-px: 224.0px // 14em
+$font-size-increment-px:     0.5px
+$font-size-start-px: $browser-context-px - ($font-size-increment-px * 3)
+
+@function pxtoem($pixels, $context: $browser-context-px)
+	@return (($pixels / 1px) / ($context / 1px)) * 1em
+
+@function pxtorem($pixels, $context: $browser-context-px)
+	@return ( pxtoem($pixels, $context) / 1em ) * 1rem
+
+@function emtopx($em, $context: $browser-context-px)
+	@return (($em / 1em) * ($context / 1px)) * 1px
+
+@function breakpointPx($level)
+	// Breakpoints generator
+	@return $breakpoints-start-px + $breakopints-increment-px * $level
+
+@function breakpointEm($level)
+	@return pxtoem(breakpointPx($level))
+
+@function fontSizePx($level)
+	// Font-sizes generator
+	@return $font-size-start-px + $font-size-increment-px * $level
+
+@function fontSizeEm($level)
+	@return pxtoem(fontSizePx($level))
+
+@function minFontSizeEm($sizePx)
+	// Minimum size of font for screen = 320px
+	@return (($sizePx / 1px) * ( 1px / emtopx(fontSizeEm(1)))) * 1em
+
+@function zoomingFontSizeVw($level)
+	@return ( ( fontSizeEm( $level + 1 ) * 100 ) / breakpointEm( $level ) ) * 1vw
+
+@function fixedFontSizeRem($level1, $level2)
+	@return ((( zoomingFontSizeVw($level1) / 1vw) * (breakpointEm($level2) / 1em)) / 100) / ( fontSizeEm($level2) / 1em ) * 1rem
+
+html
+	font-size: fontSizeEm(1)
+	@media (min-width: breakpointEm(0))
+		font-size: fontSizeEm(1)
+	@media (min-width: breakpointEm(1))
+		font-size: fontSizeEm(2)
+	@media (min-width: breakpointEm(2))
+		font-size: fontSizeEm(3)
+	@media (min-width: breakpointEm(3))
+		font-size: fontSizeEm(4)
+	@media (min-width: breakpointEm(4))
+		font-size: fontSizeEm(5)
+
+.minimum12px
+	font-size: minFontSizeEm(12px)
+.minimum14px
+	font-size: minFontSizeEm(14px)
+.minimum24px
+	font-size: minFontSizeEm(24px)
+
+.AAAAAAA
+	font-size: zoomingFontSizeVw(0)
+.nAAAAAn
+	@media (min-width: breakpointEm(0))
+		font-size: zoomingFontSizeVw(0)
+	@media (min-width: breakpointEm(5))
+		font-size: fixedFontSizeRem(0, 5)
+.nBnnnnn
+	@media (min-width: breakpointEm(0))
+		font-size: zoomingFontSizeVw(1)
+	@media (min-width: breakpointEm(1))
+		font-size: fixedFontSizeRem(1, 1)
+.nnBnnnn
+	@media (min-width: breakpointEm(1))
+		font-size: zoomingFontSizeVw(1)
+	@media (min-width: breakpointEm(2))
+		font-size: fixedFontSizeRem(1, 2)
+.nnBBBn
+	@media (min-width: breakpointEm(1))
+		font-size: zoomingFontSizeVw(1)
+	@media (min-width: breakpointEm(4))
+		font-size: fixedFontSizeRem(1, 4)
+.nABCDEn
+	@media (min-width: breakpointEm(0))
+		font-size: zoomingFontSizeVw(0)
+	@media (min-width: breakpointEm(1))
+		font-size: zoomingFontSizeVw(1)
+	@media (min-width: breakpointEm(2))
+		font-size: zoomingFontSizeVw(2)
+	@media (min-width: breakpointEm(3))
+		font-size: zoomingFontSizeVw(3)
+	@media (min-width: breakpointEm(4))
+		font-size: zoomingFontSizeVw(4)
+	@media (min-width: breakpointEm(5))
+		font-size: fixedFontSizeRem(4, 5)
+
+// Following style is not related to the mini framework
+
+@mixin clearing
+	content: ""
+	display: table
+	clear: both
+
+.nABCDEn-float
+	&:after
+		@include clearing
+	>div
+		border: 1px solid #999
+		float: left
+		padding: 0.5em
+		width: percentage(1/1)
+		@media (min-width: breakpointEm(1))
+			width: percentage(1/2)
+		@media (min-width: breakpointEm(2))
+			width: percentage(1/3)
+		@media (min-width: breakpointEm(4))
+			width: percentage(1/4)
+		@media (min-width: breakpointEm(5))
+			width: percentage(1/5)
+
+body
+	margin: 1em
+	background: #ddd
+	font-family: sans-serif
+	color: #444
+	>div
+		margin-bottom: 16px
+
+html
+	box-sizing: border-box
+*, *::before, *::after
+	box-sizing: inherit
+
+.minimum12px
+	color: Chocolate
+.minimum14px
+	color: CornflowerBlue
+.minimumDefault
+	color: DarkOliveGreen 
+.minimum24px
+	color: GoldenRod 
